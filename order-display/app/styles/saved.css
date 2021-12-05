@@ -1,0 +1,171 @@
+/*
+Contents 
+1. *
+2. -
+3. -
+4. -
+*/
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: Helvetica, sans-serif;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+body {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+      grid-template-areas: "leftWrapper rightWrapper" "inputWrapper inputWrapper";
+  background: #f5f5f5;
+}
+
+body .white {
+  background: white;
+  width: 95%;
+  height: 95%;
+  padding: 1rem;
+}
+
+body > *:not(.input-wrapper) {
+  height: 90vh;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+}
+
+body > *:not(.input-wrapper) h2 {
+  text-align: center;
+  padding: 0.75rem;
+}
+
+body > *:not(.input-wrapper) div div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  overflow-y: hidden;
+}
+
+body > *:not(.input-wrapper) div div .name {
+  font-size: 1.4rem;
+  margin: 0.25rem;
+  border: 0.15rem solid black;
+  padding: 0.25rem;
+  text-align: center;
+  opacity: 1;
+  -webkit-transition: opacity 4000ms;
+  transition: opacity 4000ms;
+  will-change: opacity;
+}
+
+body > *:not(.input-wrapper) div div .active {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: 7rem;
+  font-size: 4rem;
+  -webkit-transition: all 0.5s ease-in;
+  transition: all 0.5s ease-in;
+  opacity: 1;
+}
+
+body > *:not(.input-wrapper) div div .faded-out {
+  opacity: 0;
+}
+
+body .left-wrapper {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: leftWrapper;
+}
+
+body .right-wrapper {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: rightWrapper;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+}
+
+body #left div,
+body #right div {
+  cursor: pointer;
+}
+
+body #left div:hover,
+body #right div:hover {
+  border: 0.15rem solid #bcfabc;
+}
+
+body #left div:hover:after,
+body #right div:hover:after {
+  padding-left: 0.5rem;
+}
+
+body #right div:hover {
+  border: 0.15rem solid #fabcbc;
+}
+
+body .input-wrapper {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: inputWrapper;
+  height: 100%;
+  width: 100%;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+}
+
+body .input-wrapper .white {
+  height: 100%;
+  width: 97.5%;
+  margin: 1rem;
+  padding: 0;
+}
+
+body .input-wrapper div > input {
+  font-size: 1.5rem;
+  text-align: center;
+  border: none;
+  outline: none;
+  height: 100%;
+  width: 100%;
+}
+/*# sourceMappingURL=saved.css.map */
