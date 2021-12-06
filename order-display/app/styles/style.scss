@@ -14,6 +14,7 @@
     opacity: 1;
     transition: opacity 4000ms;
     will-change: opacity;
+    background: white;
 }
 .active {
     border-radius: 0.5rem;
@@ -66,7 +67,7 @@ body {
     grid-template-areas:
         "leftWrapper rightWrapper"
         "inputWrapper inputWrapper";
-    background: $border-color;
+    background: var(--border-color-christmas);
 
     .left-wrapper,
     .right-wrapper {
@@ -74,7 +75,8 @@ body {
         display: flex;
         flex-direction: column;
         background: white;
-        border: 1.5rem solid $border-color;
+        border: 1.5rem solid var(--border-color-christmas);
+
         .h2 {
             text-align: center;
             padding: 0.75rem;
@@ -84,10 +86,11 @@ body {
         grid-area: leftWrapper;
         display: flex;
         flex-direction: column;
+        //background-image: url(/order-display/app/nisse.jpeg);
         .counter {
             padding: 0.75rem;
             width: 100%;
-            border-bottom: 1rem solid $border-color;
+            border-bottom: 1rem solid var(--border-color-christmas);
             #customerCounter {
                 display: flex;
                 justify-content: center;
@@ -102,6 +105,10 @@ body {
     .right-wrapper {
         grid-area: rightWrapper;
         border-left: 0;
+        background-image: url(/order-display/app/nisse.jpeg);
+        background-repeat: no-repeat;
+        background-size: 65%;
+        background-position: left 200%;
         .h2 {
             padding: 1.5rem;
         }
@@ -120,9 +127,9 @@ body {
             font-size: 1.5rem;
             text-align: center;
             border: none;
-            border-left: 1.5rem solid $border-color;
-            border-right: 1.5rem solid $border-color;
-            border-bottom: 1rem solid $border-color;
+            border-left: 1.5rem solid var(--border-color-christmas);
+            border-right: 1.5rem solid var(--border-color-christmas);
+            border-bottom: 1rem solid var(--border-color-christmas);
             outline: none;
             height: 100%;
             width: 100%;

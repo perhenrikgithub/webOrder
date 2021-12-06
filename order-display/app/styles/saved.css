@@ -39,6 +39,11 @@ body {
           flex-direction: column;
 }
 
+:root {
+  --border-color-christmas: #ef3340;
+  --border-color-normal: #5f5f5f;
+}
+
 body {
   display: -ms-grid;
   display: grid;
