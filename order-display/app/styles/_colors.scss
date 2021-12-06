@@ -16,6 +16,7 @@ $font-color-light: rgb(245, 247, 250);
 $font-color-dark: rgb(10, 10, 10);
 
 :root {
-    --border-color-christmas: #ef3340;
-    --border-color-normal: #5f5f5f;
+    --border-color: #5f5f5f;
+    --border-color: #ef3340;
+    --border-color: rgba(0, 0, 0, 0.05);
 }

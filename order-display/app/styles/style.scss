@@ -5,7 +5,7 @@
 
 :root {
     --bg-image: url(/kaffediemlogo.png);
-    --bg-image-christmas: url(/order-display/app/nisse.jpeg);
+    --bg-image: url(/order-display/app/nisse.jpeg);
 }
 
 // navne div
@@ -72,7 +72,7 @@ body {
     grid-template-areas:
         "leftWrapper rightWrapper"
         "inputWrapper inputWrapper";
-    background: var(--border-color-christmas);
+    background: var(--border-color);
 
     .left-wrapper,
     .right-wrapper {
@@ -80,7 +80,7 @@ body {
         display: flex;
         flex-direction: column;
         background: white;
-        border: 1.5rem solid var(--border-color-christmas);
+        border: 1.5rem solid var(--border-color);
 
         .h2 {
             text-align: center;
@@ -95,7 +95,7 @@ body {
         .counter {
             padding: 0.75rem;
             width: 100%;
-            border-bottom: 1rem solid var(--border-color-christmas);
+            border-bottom: 1rem solid var(--border-color);
             #customerCounter {
                 display: flex;
                 justify-content: center;
@@ -132,9 +132,9 @@ body {
             font-size: 1.5rem;
             text-align: center;
             border: none;
-            border-left: 1.5rem solid var(--border-color-christmas);
-            border-right: 1.5rem solid var(--border-color-christmas);
-            border-bottom: 1rem solid var(--border-color-christmas);
+            border-left: 1.5rem solid var(--border-color);
+            border-right: 1.5rem solid var(--border-color);
+            border-bottom: 1rem solid var(--border-color);
             outline: none;
             height: 100%;
             width: 100%;

@@ -3,51 +3,47 @@ let left = document.getElementById("left");
 let right = document.getElementById("right");
 let form = document.getElementById("form");
 let name = document.getElementById("name");
-
+let counter = document.getElementById("customerCounter");
 form.addEventListener("submit", processForm);
 
-// gjør det mulig å gjøre første bokstav i string capatilized
+// gjør første bokstav i string stor
 function capitalize(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-const namesInMaking = [];
-const namesDone = [];
-let activeNameGlobalVariable = "";
+const namesLeft = [];
+const namesRight = [];
+const date = new Date();
+let numberOfCustomers = 0;
+counter.innerHTML = numberOfCustomers;
 
-function updateNameListLeft() {
-    console.log("left side updated");
+function updateNameList(side, array) {
     // fjerner alle "navn" fra VENSTRE side
-    while (left.firstChild) {
-        left.removeChild(left.firstChild);
+    while (side.firstChild) {
+        side.removeChild(side.firstChild);
     }
-    // legger til alle navn fra "namesInMaking" array på VENSTRE side
-    for (let i = 0; i < namesInMaking.length; i++) {
-        let div = document.createElement("div");
-        div.innerHTML = capitalize(namesInMaking[i]);
-        div.className = "name";
-        div.id = namesInMaking[i];
-        left.appendChild(div);
-        // adds eventlistener to be able to move to right side
-        div.addEventListener("click", moveToRight);
-    }
-}
 
-function updateNameListRight() {
-    console.log("right side updated");
-    // fjerner alle "navn" fra HØYRE side
-    while (right.firstChild) {
-        right.removeChild(right.firstChild);
-    }
-    // legger til alle navn fra "namesDone" array på HØYRE side
-    for (let i = 0; i < namesDone.length; i++) {
+    // legger til alle navn fra "namesLeft" array på VENSTRE side
+    for (let i = 0; i < array.length; i++) {
         let div = document.createElement("div");
-        div.innerHTML = capitalize(namesDone[i]);
+        div.innerHTML = capitalize(array[i]);
         div.className = "name";
-        div.id = namesDone[i];
-        right.appendChild(div);
-        // adds eventlistener to be able to delete
-        div.addEventListener("click", orderDone);
+        div.id = array[i];
+        side.appendChild(div);
+
+        // if namesRight -> eventListener -> fjerner navn
+        if (array != namesRight) {
+            div.addEventListener("click", moveToRight);
+        } else {
+            // else -> eventListener -> flytter navn til høyre side
+            div.addEventListener("click", orderDone);
+        }
+    }
+
+    // når høyre side ikke er tom og funksjonen ikke kjører for venstre side
+    if (namesRight.length != 0 && side != left) {
+        // setter navnet (på høyre side) som "active" (stor)
+        document.getElementById(namesRight[0]).classList.add("active");
     }
 }
 
@@ -55,22 +51,26 @@ function processForm(evt) {
     evt.preventDefault();
     console.log("adds: " + name.value + " to orderlist");
     // legger til navn fra input-felt i array
-    namesInMaking.unshift(name.value);
+    namesLeft.unshift(name.value);
     // oppdaterer navnelister i DOM
-    updateNameListLeft();
+    updateNameList(left, namesLeft);
 
     // "tømmer input-feltet"
     name.value = "";
+
+    console.log("-- to sum up --");
+    console.log("left: " + namesLeft);
+    console.log("right: " + namesRight);
 }
 
 function moveToRight(evt) {
-    console.log("Fjerner: " + evt.target.id + " fra namesInMaking[] og legger til i namesDone[]");
-    // fjerner navn som er trykket på fra namesInMaking[]
-    namesInMaking.splice(namesInMaking.indexOf(evt.target.id), 1);
-    // legger til navn som er trykket på i namesDone[]
-    namesDone.unshift(evt.target.id);
-    updateNameListLeft();
-    updateNameListRight();
+    console.log("Fjerner: " + evt.target.id + " fra namesLeft[] og legger til i namesRight[]");
+    // fjerner navn som er trykket på fra namesLeft[]
+    namesLeft.splice(namesLeft.indexOf(evt.target.id), 1);
+    // legger til navn som er trykket på i namesRight[]
+    namesRight.unshift(evt.target.id);
+    updateNameList(left, namesLeft);
+    updateNameList(right, namesRight);
 
     let activeName = document.getElementById(evt.target.id);
 
@@ -80,11 +80,35 @@ function moveToRight(evt) {
     requestAnimationFrame(() => {
         activeName.classList.remove("faded-out");
     });
+
+    console.log("date: " + date.getMonth());
+    // play notification when order done
+    let randomInt = Math.floor(Math.random() * 7 + 1);
+    let notification;
+    if (date.getMonth() >= 10) {
+        // hvis november eller desember -> spill jule-lyd
+        notification = new Audio("/audio/christmasAudio/christmasSound" + Math.floor(Math.random() * 4 + 1) + ".wav");
+    } else {
+        // resten av året -> spill generic-lyd
+        notification = new Audio("/audio/sound" + randomInt + ".wav");
+    }
+    notification.play();
+
+    console.log("-- to sum up --");
+    console.log("left: " + namesLeft);
+    console.log("right: " + namesRight);
 }
 
 function orderDone(evt) {
-    console.log("Fjerner: " + evt.target.id + " fra namesDone[]");
-    namesDone.splice(namesInMaking.indexOf(evt.target.id), 1);
-    updateNameListRight();
-    document.getElementById("customerCounter").innerHTML = 1;
+    console.log("Fjerner: " + evt.target.id + " fra namesRight[]");
+    namesRight.splice(namesRight.indexOf(evt.target.id), 1);
+
+    updateNameList(right, namesRight);
+
+    console.log("-- to sum up --");
+    console.log("left: " + namesLeft);
+    console.log("right: " + namesRight);
+
+    numberOfCustomers += 1;
+    counter.innerHTML = numberOfCustomers;
 }
