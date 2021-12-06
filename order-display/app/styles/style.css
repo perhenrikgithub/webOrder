@@ -44,6 +44,11 @@ body {
   --border-color-normal: #5f5f5f;
 }
 
+:root {
+  --bg-image: url(/kaffediemlogo.png);
+  --bg-image-christmas: url(/order-display/app/nisse.jpeg);
+}
+
 .name {
   font-size: 2rem;
   margin: 0.25rem;
@@ -175,10 +180,10 @@ body .right-wrapper {
   -ms-grid-column: 2;
   grid-area: rightWrapper;
   border-left: 0;
-  background-image: url(/order-display/app/nisse.jpeg);
+  background-image: var(--bg-image);
   background-repeat: no-repeat;
-  background-size: 65%;
-  background-position: left 200%;
+  background-size: 55%;
+  background-position: left bottom;
 }
 
 body .right-wrapper .h2 {

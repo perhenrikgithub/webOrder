@@ -3,6 +3,11 @@
 @import "colors";
 @import "effects";
 
+:root {
+    --bg-image: url(/kaffediemlogo.png);
+    --bg-image-christmas: url(/order-display/app/nisse.jpeg);
+}
+
 // navne div
 .name {
     font-size: 2rem;
@@ -105,10 +110,10 @@ body {
     .right-wrapper {
         grid-area: rightWrapper;
         border-left: 0;
-        background-image: url(/order-display/app/nisse.jpeg);
+        background-image: var(--bg-image);
         background-repeat: no-repeat;
-        background-size: 65%;
-        background-position: left 200%;
+        background-size: 55%;
+        background-position: left bottom;
         .h2 {
             padding: 1.5rem;
         }
